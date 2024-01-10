@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -67,4 +69,21 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    ksp("com.github.bumptech.glide:ksp:4.14.2")
+
+    // koin
+    implementation("io.insert-koin:koin-core:3.0.1")
+    implementation("io.insert-koin:koin-android:3.0.1")
+
 }
