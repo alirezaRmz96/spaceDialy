@@ -1,11 +1,12 @@
 package com.example.spacedaily.di
 
 import com.example.spacedaily.data.NASAAPIInterface
+import com.example.spacedaily.ui.MainViewModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.BuildConfig
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module {
     single(named("BASE_URL")) {
-        "https://api.nasa.gov/plantary/"
+        "https://api.nasa.gov/planetary/"
     }
     single {
         val interceptor = HttpLoggingInterceptor()
@@ -23,11 +24,12 @@ val networkModule = module {
     }
     single {
         val client = OkHttpClient().newBuilder()
-            .connectTimeout(30,TimeUnit.SECONDS)
-            .writeTimeout(30,TimeUnit.SECONDS)
-            .readTimeout(30,TimeUnit.SECONDS)
-        if (BuildConfig.DEBUG)
-            client.addInterceptor(get<HttpLoggingInterceptor>())
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .addInterceptor(get<HttpLoggingInterceptor>())
+//        if (BuildConfig.DEBUG)
+//            client.addInterceptor(get<HttpLoggingInterceptor>())
         client.build()
     }
     single {
@@ -47,9 +49,6 @@ val networkModule = module {
     }
 }
 
-/*
-val coroutines = module {
-    single(named("Background")) { Dispatchers.Default }
-    single(named("Io")) { Dispatchers.IO }
-    single(named("UI")) { Dispatchers.Main }
-}*/
+val viewModelModule = module {
+    viewModel { MainViewModel() }
+}

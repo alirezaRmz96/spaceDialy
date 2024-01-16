@@ -3,7 +3,7 @@ package com.example.spacedaily.data
 import com.squareup.moshi.Json
 
 data class PhotoResponse(
-    val data: String,
+    val date: String,
     val explanation: String,
     val hdurl: String?,
     @Json(name = "media_type")

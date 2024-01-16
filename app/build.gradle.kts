@@ -83,7 +83,15 @@ dependencies {
     ksp("com.github.bumptech.glide:ksp:4.14.2")
 
     // koin
-    implementation("io.insert-koin:koin-core:3.0.1")
-    implementation("io.insert-koin:koin-android:3.0.1")
+    implementation("io.insert-koin:koin-core:3.5.3")
+    implementation("io.insert-koin:koin-android:3.5.3")
+    implementation("io.insert-koin:koin-core-coroutines:3.5.3")
+    implementation("io.insert-koin:koin-android-compat:3.5.3")
+    implementation("io.insert-koin:koin-androidx-navigation:3.5.3")
+    implementation("io.insert-koin:koin-androidx-compose:3.5.3")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
+
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
 }
